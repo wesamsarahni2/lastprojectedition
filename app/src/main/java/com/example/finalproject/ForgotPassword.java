@@ -87,7 +87,7 @@ public class ForgotPassword extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentTransaction ft =getActivity().getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.mainFrame, new SettingsFragment());
+                ft.replace(R.id.mainFrame, new LoginFragment());
                 ft.commit();
             }
         });

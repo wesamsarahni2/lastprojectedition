@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -143,6 +144,15 @@ public class ProfileFragment extends Fragment {
                     progressBar.setVisibility(View.GONE);
                     proimg.setImageBitmap(bitmap);
                 }
+
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Drawable res = getResources().getDrawable(R.drawable.baseline_person_outline_24);
+
+                    proimg.setImageDrawable(res);
+                    progressBar.setVisibility(View.GONE);
+                }
             });
 
 
@@ -174,6 +184,7 @@ public class ProfileFragment extends Fragment {
 
         }
     }
+
 
     private void pagesetup() {
         firestore.collection("Users")

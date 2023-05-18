@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -57,6 +58,7 @@ public class AddFragment extends Fragment implements AdapterView.OnItemSelectedL
     private FirebaseAuth mAuth=FireBaseServices.getInstance().getAuth();
     private StorageReference storageReference;
     private ProgressBar progressBar;
+
     private ImageView avatar;
     private boolean ava;
     // TODO: Rename parameter arguments, choose names that match
@@ -171,7 +173,15 @@ public class AddFragment extends Fragment implements AdapterView.OnItemSelectedL
                     progressBar.setVisibility(View.GONE);
                     avatar.setImageBitmap(bitmap);
                 }
-            });
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Drawable res = getResources().getDrawable(R.drawable.baseline_add_photo_alternate_24);
+
+                    avatar.setImageDrawable(res);
+                    progressBar.setVisibility(View.GONE);
+                }
+            });;
 
 
         }catch (IOException e){
