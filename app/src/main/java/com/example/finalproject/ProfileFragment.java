@@ -148,7 +148,7 @@ public class ProfileFragment extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Drawable res = getResources().getDrawable(R.drawable.baseline_person_outline_24);
+                    Drawable res = getResources().getDrawable(R.drawable.baseline_add_photo_alternate_24);
 
                     proimg.setImageDrawable(res);
                     progressBar.setVisibility(View.GONE);
